@@ -14,7 +14,7 @@ class Author(models.Model):
         ordering =['last_name','first_name']
     
     def get_absolute_url(self):
-        return reverse('author-details',args=[str(self.id)])
+        return reverse('author-detail',args=[str(self.id)])
 
     def __str__(self):
         return f'{self.first_name}, {self.last_name}'

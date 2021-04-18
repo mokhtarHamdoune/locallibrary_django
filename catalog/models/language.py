@@ -7,4 +7,4 @@ class Language(models.Model):
     book = models.ForeignKey('Book',on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.book.title} lang : {self.name}'
+        return self.name

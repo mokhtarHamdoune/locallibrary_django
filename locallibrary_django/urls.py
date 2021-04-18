@@ -23,5 +23,5 @@ urlpatterns = [
     path('catalog/',include('catalog.urls')),
     path('', RedirectView.as_view(url='catalog/')),
 ]
-
+# server the static files because Django does not serve them by default
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
