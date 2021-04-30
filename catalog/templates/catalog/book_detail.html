@@ -1,7 +1,12 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-    <h1>Title {{book.title}}</h1>
+    <div class="d-flex align-items-center">
+      <h1 class="mr-4">Title {{book.title}}</h1>  
+      {% if perms.catalog.can_mark_returned %}   
+      <a style="font-size:20px;" href="{% url 'book-update' book.pk %}">Edit</a>|<a style="font-size:20px;" href="{% url 'book-delete' book.pk %}">Delete</a>
+      {% endif %}
+    </div>
     <p><strong>Author:</strong> <a href="{% url 'author-detail' book.author.pk %}">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
     <p><strong>Summary:</strong> {{ book.summary }}</p>
     <p><strong>ISBN:</strong> {{ book.isbn }}</p>

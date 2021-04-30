@@ -8,12 +8,15 @@
         - {{author.date_of_death}}
         {% endif %}
         )
+        {%if perms.catalog.can_mark_returned %}
+                <a href="{% url 'author-update' author.pk %}">Edit</a>|<a href="{% url 'author-delete' author.pk %}">Delete</a>
+        {% endif %}
     </h5>
     <div style="margin-left:20px;margin-top:20px">
       <h4>Books</h4>
       {% for book in author.book_set.all %} 
       <hr>
-        <h3><a href="{% url 'book-detail' book.pk %}">{{book.title}}</a>({{book.bookinstance_set.count}})</h3>
+        <h3><a href="{% url 'book-detail' book.pk %}">{{book.title}}</a>({{book.bookinstance_set.count}}) </h3>
         <p>
             {{book.summary}}
         </p>
